@@ -186,11 +186,11 @@ CONTENTSTORE = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'ATOMIC_REQUESTS': True,
     },
     'student_module_history': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
     },
 }
 
