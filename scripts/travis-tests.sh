@@ -10,8 +10,28 @@ set -o pipefail
 # just done via the dependencies override section of circle.yml.
 export NO_PREREQ_INSTALL='true'
 PAVER_ARGS="--with-flaky --processes=-1 --cov-args='-p' --with-xunitmp"
+# Violations thresholds for failing the build
+export PYLINT_THRESHOLD=3600
+export ESLINT_THRESHOLD=10122
+
+SAFELINT_THRESHOLDS=`cat scripts/safelint_thresholds.json`
+export SAFELINT_THRESHOLDS=${SAFELINT_THRESHOLDS//[[:space:]]/}
 
 EXIT=0
+
+# Clean up previous builds
+git clean -qxfd
+
+function emptyxunit {
+
+    cat > reports/$1.xml <<END
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="$1" tests="1" errors="0" failures="0" skip="0">
+<testcase classname="$1" name="$1" time="0.604"></testcase>
+</testsuite>
+END
+
+}
 
 case "$TEST_SUITE" in
 
