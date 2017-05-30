@@ -26,6 +26,24 @@ branches:
   # Testing CI Branch
   - oxa/ci
 
+cache: packages
+  
+before_install:
+ - sudo apt-add-repository -y ppa:travis-ci/sqlite3
+ - sudo apt-get -y update
+ - sudo apt-get -y install sqlite3=3.7.15.1-1~travis1
+
+addons:
+  apt:
+    source:
+      - travis-ci/sqlite3
+    packages:
+      - libzip-dev
+      - sqlite3
+      - libsqlite3-dev
+      - libsqlite3-0
+      - libspatialite-dev
+
 # command to install dependencies
 install:   
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install 6.9.4
@@ -57,3 +75,4 @@ install:
 script: ./scripts/travis-tests.sh
 
 dist: trusty
+sudo: required
