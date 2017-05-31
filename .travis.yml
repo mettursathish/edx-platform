@@ -53,6 +53,9 @@ install:
   - sudo apt-get install swig
   - if [ -e requirements/edx/post.txt ]; then pip install --exists-action w -r requirements/edx/post.txt ; fi
 
+before-script:
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'travis'@'%';"
+
 # command to run tests
 script: ./scripts/travis-tests.sh
 
