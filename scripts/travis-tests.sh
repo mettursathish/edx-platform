@@ -68,7 +68,8 @@ case "$TEST_SUITE" in
         ;;
 
     "cms-unit")
-        paver test_system -s cms $PAVER_ARGS
+        paver test_system -t cms.djangoapps.contentstore.management.commands.tests.test_cleanup_assets.ExportAllCourses
+        # paver test_system -s cms $PAVER_ARGS
         ;;
 
     "lib")
