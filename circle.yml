@@ -1,6 +1,8 @@
 machine:
   python:
     version: 2.7.10
+  node:
+    version: 6.9
 
 general:
   artifacts:
@@ -30,7 +32,9 @@ dependencies:
     - pip install --exists-action w -r requirements/edx/base.txt
     - pip install --exists-action w -r requirements/edx/paver.txt
     - if [ -e requirements/edx/post.txt ]; then pip install --exists-action w -r requirements/edx/post.txt ; fi
-
+    - sudo apt-get update
+    - sudo apt-get install libxmlsec1-dev
+    - sudo apt-get install swig
     - pip install coveralls==1.0
 
     # Output the installed python packages to the console to help
