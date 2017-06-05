@@ -14,9 +14,9 @@ env:
   - TEST_SUITE="cms-unit"
   - TEST_SUITE="lms-unit"
 
-cache:
-  - npm
-  - pip
+#cache:
+  #- npm
+  #- pip
 
 branches:
   only:
