@@ -13,6 +13,7 @@ from enrollment.errors import (
 )
 from enrollment.serializers import CourseEnrollmentSerializer, CourseSerializer
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.lib.exceptions import CourseNotFoundError
 from student.models import (
     CourseEnrollment, NonExistentCourseError, EnrollmentClosedError,
@@ -110,6 +111,7 @@ def create_course_enrollment(username, course_id, mode, is_active):
     site_course_org_filter = configuration_helpers.get_value('course_org_filter')
 
     if site_course_org_filter == course_key.org or not site_course_org_filter:
+
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:

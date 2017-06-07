@@ -1,3 +1,7 @@
+Overview
+--------
+![CI Tags](https://travis-ci.org/Microsoft/edx-platform.svg?branch=master)
+
 This is the main edX platform which consists of LMS and Studio.
 
 

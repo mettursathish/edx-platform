@@ -1,6 +1,7 @@
 language: python
 python:
   - "2.7"
+
 services:
   - mongodb
   - mysql
@@ -11,9 +12,7 @@ env:
   - TEST_SUITE="lms-unit"
   - TEST_SUITE="cms-unit"
   - TEST_SUITE="lib"
-  - TEST_SUITE="quality"
-  
-  
+  - TEST_SUITE="quality"  
 
 cache:
   pip: true
@@ -21,9 +20,10 @@ cache:
 
 branches:
   only:
-  # - master
-  # - oxa/master.fic
-  # - oxa/devfic
+  - master
+  - oxa/master.fic
+  - oxa/devfic
+  - oxa/ci
   - oxa/ci-reset
 
 before_install:
@@ -61,3 +61,4 @@ install:
 script: ./scripts/travis-tests.sh
 
 dist: trusty
+sudo: required
