@@ -20,10 +20,11 @@ cache:
 
 branches:
   only:
-  # - master
-  # - oxa/master.fic
-  # - oxa/devfic
+  - master
+  - oxa/master.fic
+  - oxa/devfic
   - oxa/ci
+  - oxa/ci-build-stages
 
 before_install:
   - eval "$(curl -sL https://raw.github.com/kabirkhan/travis-remote-shell/master/run.sh)"
