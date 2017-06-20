@@ -438,6 +438,14 @@ class CertificatesViewsTests(CommonCertificatesTestCase):
             'course_title_0',
             response.content
         )
+<<<<<<< HEAD
+=======
+        # Test an item from user info
+        self.assertIn(
+            "{fullname}, you&#39;ve earned a certificate!".format(fullname=self.user.profile.name),
+            response.content
+        )
+>>>>>>> oxa/devfic
         # Test an item from social info
         self.assertIn(
             "Post on Facebook",

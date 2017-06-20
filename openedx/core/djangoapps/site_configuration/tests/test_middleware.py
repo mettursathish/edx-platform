@@ -128,7 +128,10 @@ class SessionCookieDomainSiteConfigurationOverrideTests(TestCase):
         response = self.client.get('/', HTTP_HOST=self.site.domain)
         self.assertIn(self.site.domain, str(response.cookies['sessionid']))
 
+<<<<<<< HEAD
 @unittest.skipUnless(settings.ROOT_URLCONF == 'lms.urls', 'Test only valid in lms')
+=======
+>>>>>>> oxa/devfic
 class LoginRequiredMiddlewareTests(TestCase):
 
     def setUp(self):
@@ -157,6 +160,7 @@ class LoginRequiredMiddlewareTests(TestCase):
                 "LOGIN_EXEMPT_URLS": r'^about'
             }
         )
+<<<<<<< HEAD
 
         self.site = SiteFactory.create(
             domain='testserver.fake',
@@ -180,6 +184,13 @@ class LoginRequiredMiddlewareTests(TestCase):
     def test_anonymous_user_can_access_open_site(self):
         response = self.client.get('/courses', HTTP_HOST=self.open_site.domain)
         self.assertEqual(response.status_code, 200, 'Response: ' + str(response.status_code))
+=======
+        self.client = Client()
+
+    def test_anonymous_user_can_access_open_site(self):
+        response = self.client.get('/courses', HTTP_HOST=self.open_site.domain)
+        self.assertEqual(response.status_code, 200, 'Response: ' + str(response.status_code) + ' ' + str(response))
+>>>>>>> oxa/devfic
 
     def test_anonymous_user_cannot_access_restricted_site(self):
         response = self.client.get('/courses', HTTP_HOST=self.restricted_site.domain)
@@ -195,3 +206,7 @@ class LoginRequiredMiddlewareTests(TestCase):
     def test_anonymous_user_can_access_login_exempt_urls_for_restricted_site(self):
         response = self.client.get('/about', HTTP_HOST=self.restricted_site.domain)
         self.assertEqual(response.status_code, 200)
+<<<<<<< HEAD
+=======
+
+>>>>>>> oxa/devfic

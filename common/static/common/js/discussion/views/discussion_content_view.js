@@ -415,7 +415,11 @@
                 updates = {
                     upvoted_ids: (isVoting ? _.union : _.difference)(user.get('upvoted_ids'), [this.model.id])
                 };
+<<<<<<< HEAD
                 if (!$($(self).closest('.actions-item')).hasClass('is-disabled')) {
+=======
+                if (!$(self).closest('.actions-item').hasClass('is-disabled')) {
+>>>>>>> oxa/devfic
                     return DiscussionUtil.updateWithUndo(user, updates, {
                         url: url,
                         type: 'POST',
